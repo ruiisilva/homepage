@@ -1,14 +1,35 @@
 body{
-  font-family: Helvetica, Arial, sans-serif;
   margin:0;
+  font-family: Helvetica, Arial, sans-serif;
   background:black;
   color:white;
 }
 
+/* HEADER */
+
 header{
   text-align:center;
-  padding:70px;
+  padding:30px;
 }
+
+header h1{
+  margin-bottom:10px;
+}
+
+/* MENU */
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin:0 15px;
+  font-size:18px;
+}
+
+nav a:hover{
+  opacity:0.6;
+}
+
+/* GALERIA */
 
 .gallery{
   display:grid;
@@ -21,4 +42,9 @@ header{
   width:100%;
   height:auto;
   display:block;
+  transition: transform 0.3s;
+}
+
+.gallery img:hover{
+  transform: scale(1.03);
 }
