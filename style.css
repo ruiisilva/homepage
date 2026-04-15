@@ -1,50 +1,151 @@
-body{
-  margin:0;
-  font-family: Helvetica, Arial, sans-serif;
-  background:black;
-  color:white;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* HEADER */
-
-header{
-  text-align:center;
-  padding:30px;
+:root {
+  --bg: #0d0d0d;
+  --text: #c0c0c0;
+  --text-primary: #efefef;
+  --muted: #555;
+  --gap: 2px;
+  --header-h: 72px;
 }
 
-header h1{
-  margin-bottom:10px;
+html {
+  scroll-behavior: smooth;
 }
 
-/* MENU */
-
-nav a{
-  color:white;
-  text-decoration:none;
-  margin:0 15px;
-  font-size:18px;
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 0.875rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-nav a:hover{
-  opacity:0.6;
+/* ── HEADER ─────────────────────────────────────── */
+
+header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 200;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: rgba(13, 13, 13, 0.88);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* GALERIA */
-
-.gallery{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-  gap:10px;
-  padding:40px;
+.logo {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  color: var(--text-primary);
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
-.gallery img{
-  width:100%;
-  height:auto;
-  display:block;
-  transition: transform 0.3s;
+nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
 
-.gallery img:hover{
-  transform: scale(1.03);
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--text-primary);
+}
+
+/* ── SPACER ─────────────────────────────────────── */
+
+.header-spacer {
+  height: var(--header-h);
+}
+
+/* ── GALLERY ────────────────────────────────────── */
+
+.gallery {
+  columns: 3;
+  column-gap: var(--gap);
+  padding: var(--gap);
+}
+
+.gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: var(--gap);
+  break-inside: avoid;
+  transition: opacity 0.35s ease;
+}
+
+.gallery img:hover {
+  opacity: 0.72;
+}
+
+/* ── FOOTER ─────────────────────────────────────── */
+
+footer {
+  margin-top: 80px;
+  padding: 48px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+footer p {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── RESPONSIVE ─────────────────────────────────── */
+
+@media (max-width: 900px) {
+  header {
+    padding: 0 32px;
+  }
+
+  .gallery {
+    columns: 2;
+  }
+}
+
+@media (max-width: 560px) {
+  header {
+    padding: 0 20px;
+    gap: 16px;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+
+  nav {
+    gap: 20px;
+  }
+
+  .gallery {
+    columns: 1;
+  }
 }
